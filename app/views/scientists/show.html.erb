@@ -1,0 +1,22 @@
+<h1>Scientist Show Page</h1>
+
+<h3>Name: <%= @scientist.name %></h3>
+<p>Field of Study: <%= @scientist.field_of_study %></p>
+
+<p><%= link_to "EDIT SCIENTIST", edit_scientist_path(@scientist) %></p>
+<%= button_to "DELETE SCIENTIST", scientist_path(@scientist), method: :delete %>
+
+<h3>Planets visited:</h3>
+<ul>
+    <% @scientist.missions.each do |mission|%>
+        <li>Mission: <%= mission.name %>
+        <li>Planet: <%= link_to mission.planet.name, planet_path(mission.planet) %></li>
+        <br>
+    <% end%>
+</ul>
+
+
+
+<p><%= link_to "BACK TO SCIENTIST INDEX", scientists_path %></p>
+
+<%= params.inspect %>
